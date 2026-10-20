@@ -17,6 +17,19 @@ app.use('/uploads',express.static(path.join(__dirname,'./uploads')))
 const auth = require('./routes/auth')
 app.use('/api/auth',auth)
 
+const profile = require('./routes/profile')
+app.use('/api/profile',profile)
+
+//eva
+
+const selfeva = require('./routes/Eva/selfeva')
+app.use('/api/Eva/selfeva',selfeva) 
+
+const edit_eva = require('./routes/Eva/edit_eva')
+app.use('/api/Eva/edit_eva',edit_eva) 
+
+//staff
+
 const member = require('./routes/Staff/member')
 app.use('/api/Staff/member',member)
 

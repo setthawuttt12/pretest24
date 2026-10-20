@@ -33,7 +33,7 @@ router.post('/login',async (req,res) => {
         const {username,password,role} = req.body
         const [rows] = await db.query(`select * from tb_member where username=? and role=?`,[username,role])
         const m = rows[0]
-        if(!m || password || !(await bc.compare(password,m.password))){
+        if(!m || !password || !(await bc.compare(password,m.password))){
             return res.status(400).json({message:"รหัสผ่านไม่ถูกต้อง"})
         }
         const token = jwt.sign(

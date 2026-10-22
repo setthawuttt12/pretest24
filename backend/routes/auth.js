@@ -11,7 +11,7 @@ router.post('/regis',async (req,res) => {
     try {
         
         const form = JSON.parse(req.body.form)
-        const pic_user = req.files.pic_user
+        const pic_user = req.files?.pic_user
         let filename = null
         if(pic_user){
             filename = Date.now() + path.extname(pic_user.name)

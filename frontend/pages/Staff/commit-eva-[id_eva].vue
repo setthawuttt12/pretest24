@@ -2,13 +2,13 @@
     <v-container>
         <v-row justify="center">
             <v-col cols="12" md="12">
-                <v-card-mb-3>
+                <v-card class="mb-3">
                     <v-card-title><h1 class="text-center">ผู้รับการประเมินผล</h1></v-card-title>
                     <v-card-text>
                         <p>ชื่อ-สกุล: {{ header.fname }} {{ header.lname }}</p>
                         <p>รอบการประเมินที่: {{ header.round_sys }} ปี: {{ header.year_sys }}</p>
                     </v-card-text>
-                </v-card-mb-3>
+                </v-card>
                 <v-card>
                     <v-card-title>
                         <h1 class="text-center text-h5">เพิ่มกรรมการ</h1>

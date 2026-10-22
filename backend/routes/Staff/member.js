@@ -64,7 +64,7 @@ router.get('/showE',verifyToken,requireRole('ฝ่ายบุคลากร')
 router.get('/showC',verifyToken,requireRole('ฝ่ายบุคลากร'),async (req,res) => {
     try {
         
-        const [rows] = await db.query(`select * from tb_member where role='กรรมการประเมินผล' order by id_member desc`)
+        const [rows] = await db.query(`select * from tb_member where role='กรรมการประเมิน' order by id_member desc`)
         res.json(rows)
 
     } catch (error) {

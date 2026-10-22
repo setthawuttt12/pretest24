@@ -6,7 +6,7 @@ const fs = require('fs')
 const router = express.Router()
 const {verifyToken,requireRole} = require('../../middleware/authmiddleware')
 
-router.post('/save',verifyToken,requireRole('ฝ่ายบุคลกร'),async (req,res) => {
+router.post('/save',verifyToken,requireRole('ฝ่ายบุคลากร'),async (req,res) => {
     try {
         
         const {name_doc} = req.body
@@ -17,7 +17,7 @@ router.post('/save',verifyToken,requireRole('ฝ่ายบุคลกร'),as
         }
         const filename = Date.now() + path.extname(file.name)
         await file.mv(path.join(uploadDir,filename))
-        const [rows] = await db.query(`insert into tb_doc(name_doc,file) values(?,CURDATE(),?)`,[name_doc,filename])
+        const [rows] = await db.query(`insert into tb_doc(name_doc,day_doc,file) values(?,CURDATE(),?)`,[name_doc,filename])
         res.json(rows)
     } catch (error) {
         console.error("Error save",error);

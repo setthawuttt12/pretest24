@@ -14,13 +14,13 @@
                         <v-alert variant="tonal" type="error" v-if="error">{{ error }}</v-alert>
                         <v-form @submit.prevent="login">
                             <v-row>
-                                <v-col cols="12" md="6">
+                                <v-col cols="12" md="12">
                                     <v-text-field label="ชื่อผู้ใช้งาน" v-model="username" prepend-inner-icon="mdi-account"></v-text-field>
                                 </v-col>
-                                <v-col cols="12" md="6">
+                                <v-col cols="12" md="12">
                                     <v-text-field label="รหัสผ่าน" v-model="password" :prepend-inner-icon="show ? 'mdi-eye':'mdi-eye-off'" :type="showPw ? 'text':'password'" @click:prepend-inner="show = !show , showPw = !showPw"></v-text-field>
                                 </v-col>
-                                <v-col cols="12" md="6">
+                                <v-col cols="12" md="12">
                                     <v-select label="ประเภทสมาชิก" v-model="role"  :items="typeR" prepend-inner-icon="mdi-account-group"></v-select>
                                 </v-col>
                             </v-row>

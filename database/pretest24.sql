@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Oct 21, 2026 at 03:14 AM
+-- Generation Time: Oct 22, 2026 at 03:13 AM
 -- Server version: 26.7.0
 -- PHP Version: 8.3.35
 
@@ -46,9 +46,16 @@ CREATE TABLE `tb_commit` (
 CREATE TABLE `tb_doc` (
   `id_doc` int NOT NULL,
   `name_doc` varchar(100) NOT NULL,
-  `day_doc` int NOT NULL,
+  `day_doc` date NOT NULL,
   `file` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tb_doc`
+--
+
+INSERT INTO `tb_doc` (`id_doc`, `name_doc`, `day_doc`, `file`) VALUES
+(1, 'test', '2026-10-04', NULL);
 
 -- --------------------------------------------------------
 
@@ -252,7 +259,7 @@ ALTER TABLE `tb_commit`
 -- AUTO_INCREMENT for table `tb_doc`
 --
 ALTER TABLE `tb_doc`
-  MODIFY `id_doc` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_doc` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_eva`

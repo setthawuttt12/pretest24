@@ -23,6 +23,9 @@ app.use('/api/profile',profile)
 const docnoe = require('./routes/docnoe')
 app.use('/api/docnoe',docnoe)
 
+const dash = require('./routes/dash')
+app.use('/api/dash',dash)
+
 //eva
 
 const selfeva = require('./routes/Eva/selfeva')
@@ -36,6 +39,9 @@ app.use('/api/Eva/score_member',score_member)
 
 const score_commit = require('./routes/Eva/score_commit')
 app.use('/api/Eva/score_commit',score_commit) 
+
+const table = require('./routes/Eva/table')
+app.use('/api/Eva/table',table) 
 
 //staff
 
@@ -71,6 +77,10 @@ app.use('/api/Staff/status',status)
 
 const backup = require('./routes/Staff/backup')
 app.use('/api/Staff/backup',backup)
+//commit api
+
+const score_commit2 = require('./routes/Commit/score_commit')
+app.use('/api/Commit/score_commit',score_commit2)
 
 app.use((req,res)=> res.status(404).json({message:"Route Not found"}))
 app.listen(3001,()=>{

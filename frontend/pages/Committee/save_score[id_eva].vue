@@ -43,13 +43,12 @@
 </template>
 
 <script setup lang="ts">
-import axios from 'axios'
-import { commit } from '../../API/base'
-
+import axios from 'axios';
+import {commit} from '../../API/base';
 
 const user = ref<any>({})
 const topics = ref<any>([])
-const  detail_commit = ref('')
+const detail_commit = ref('')
 const id_eva = useRoute().params.id_eva
 
 const viweFile = (filename:string) =>{
@@ -60,25 +59,27 @@ const viweFile = (filename:string) =>{
 const fetchUser = async()=>{
     const token = localStorage.getItem('token')
     try {
-        const res = await axios.get(`${commit}/save_score/user/:${id_eva}`,{headers:{Authorization:`Bearer ${token}`}})
+        const res = await axios.get(`${commit}/save_score/user/${id_eva}`,{headers:{Authorization:`Bearer ${token}`}})
         user.value = res.data
     } catch (error) {
-        console.error('Error get user',error)
+        console.error('Error Get User',error)
     }
 }
 const fetchTopic = async()=>{
     const token = localStorage.getItem('token')
     try {
-        const res = await axios.get(`${commit}/save_score/topic/:${id_eva}`,{headers:{Authorization:`Bearer ${token}`}})
+        const res = await axios.get(`${commit}/save_score/topic/${id_eva}`,{headers:{Authorization:`Bearer ${token}`}})
         topics.value = res.data
     } catch (error) {
-        console.error('Error get user',error)
+        console.error('Error Get User',error)
     }
 }
 
 onMounted(async()=>{
     await Promise.all([fetchUser(),fetchTopic()])
 })
+
+
 
 
 const saveScore = async()=>{
@@ -117,6 +118,7 @@ const saveScore = async()=>{
         console.error('ERROR POST SCORES !!!',error)
     }
 }
+
 
 </script>
 

@@ -1,12 +1,12 @@
 const express =require('express')
 const path= require('path')
 const db = require('../../db')
-const uploadDir = path.join(__dirname,'../../uploads/document')
+const uploadDir = path.join(__dirname,'../../uploads/signature')
 const fs = require('fs')
 const router = express.Router()
 const {verifyToken,requireRole} = require('../../middleware/authmiddleware')
 
-router.post('/:id_eva',verifyToken,requireRole('กรรมกาประเมิน'),async (req,res) => {
+router.post('/:id_eva',verifyToken,requireRole('กรรมการประเมิน'),async (req,res) => {
     try {
         const id_member = req.user.id_member
         const id_eva = req.params.id_eva
@@ -29,7 +29,7 @@ router.post('/:id_eva',verifyToken,requireRole('กรรมกาประเ�
     }
 })
 
-router.delete('/:id_eva',verifyToken,requireRole('กรรมกาประเมิน'),async (req,res) => {
+router.delete('/:id_eva',verifyToken,requireRole('กรรมการประเมิน'),async (req,res) => {
     try {
         const id_member = req.user.id_member
         const id_eva = req.params.id_eva
@@ -46,7 +46,7 @@ router.delete('/:id_eva',verifyToken,requireRole('กรรมกาประเ
     }
 })
 
-router.get('/:id_eva',verifyToken,requireRole('กรรมกาประเมิน'),async (req,res) => {
+router.get('/:id_eva',verifyToken,requireRole('กรรมการประเมิน'),async (req,res) => {
     try {
         const id_member = req.user.id_member
         const id_eva = req.params.id_eva

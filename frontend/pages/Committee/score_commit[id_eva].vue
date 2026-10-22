@@ -29,7 +29,7 @@
                         <v-card color="green" >คะแนนรวม : {{ user.total_eva }} คะแนน</v-card>
                     </div>
                 </v-form>
-                <v-alert variant="tonal" color="warning" type="warning" v-else-if="user.status_commit === 'n'">ยังไม่ได้ประเมิน</v-alert>
+                <v-alert variant="tonal" color="warning" type="warning" v-else-if="user.status_commit === 'n'" >ยังไม่ได้ประเมิน</v-alert>
                 <v-alert variant="tonal" color="error" type="error" v-else>ยังไม่มีแบบประเมิน</v-alert>
             </v-col>
         </v-row>
@@ -44,6 +44,7 @@ import { eva,api, commit } from '~/API/base'
 const user = ref<any>({})
 const topics = ref<any>([])
 const id_eva = useRoute().params.id_eva
+const totalScore = ref(0)
 
 const view = (file:string)=>{
     const url = new URL(`/uploads/file_eva/${(file)}`,api).href
@@ -66,6 +67,7 @@ const fetchTopic = async()=>{
     try {
         const res = await axios.get(`${commit}/score_commit/topic/${id_eva}`,{headers:{Authorization:`Bearer ${token}`}})
         topics.value = res.data
+        res.data.forEach((s:any)=> s.indicates.forEach((i:any)=> totalScore.value += (i.score_commit*i.point_indicate)))
     } catch (error) {
         console.error('Error get user',error)
     }

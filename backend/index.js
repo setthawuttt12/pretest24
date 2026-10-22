@@ -65,6 +65,18 @@ app.use('/api/Staff/commit',commit)
 const score_commit2 = require('./routes/Commit/score_commit')
 app.use('/api/Commit/score_commit',score_commit2)
 
+const check = require('./routes/Commit/check')
+app.use('/api/Commit/check',check)
+
+const show_eva = require('./routes/Commit/show_eva')
+app.use('/api/Commit/show_eva',show_eva)
+
+const savescore = require('./routes/Commit/save_score')
+app.use('/api/Commit/save_score',savescore)
+
+const signature = require('./routes/Commit/signature')
+app.use('/api/Commit/signature',signature)
+
 app.use((req,res)=> res.status(404).json({message:"Route Not found"}))
 app.listen(3001,()=>{
     console.log("Server running on port 3001");

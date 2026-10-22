@@ -10,10 +10,7 @@
                         <br>
                         <v-form v-if="!dataResult.signature" @submit.prevent="saveMember">
                             <v-row>
-                                <v-col cols="12" md="6">
-                                    <v-text-field label="ชื่อเอกสาร" v-model="name_doc" :error-messages="error.name_doc" prepend-inner-icon="mdi-file-edit"></v-text-field>
-                                </v-col>
-                                <v-col cols="12" md="6">
+                                <v-col cols="12" md="12">
                                     <v-file-input label="เอกสาร" v-model="file" :error-messages="error.file" prepend-inner-icon="mdi-file" accept=".pdf" hint="รองรับเฉพาะไฟล์ PDF ขนาดไม่เกิน 10MB"></v-file-input>
                                 </v-col>
                             </v-row>
@@ -38,7 +35,6 @@
                                 <tr>
                                     <td class="border text-center">{{ 1 }}</td>
                                     <td class="border text-center">{{ dataResult.signature }}</td>
-                                    <td class="border text-center">{{ formatDate(items.day_doc) }}</td>
                                     <td class="border text-center">
                                         <center>
                                             <v-btn class="text-center" color="info" prepend-icon="mdi-eye" @click="view(dataResult.signature)">เปิดดู</v-btn>
@@ -125,7 +121,7 @@ const result = computed(()=>{
 })
 
 const view = (file:string)=>{
-    const url = new URL(`/uploads/signature.${file}`,api).href
+    const url = new URL(`/uploads/signature/${file}`,api).href
     window.open(url,'_blank')
 }
 
